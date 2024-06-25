@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp_30">30sp</dimen>
+    <dimen name="sp_100">100sp</dimen>
+    <dimen name="sp_700">700sp</dimen>
+    <dimen name="sp_500">500sp</dimen>
+    <dimen name="sp_600">600sp</dimen>
+    <dimen name="sp_550">550sp</dimen>
+</resources>
