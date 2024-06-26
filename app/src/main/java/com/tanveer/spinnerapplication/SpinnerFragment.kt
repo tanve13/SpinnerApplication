@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -26,8 +27,9 @@ class SpinnerFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
- var binding: FragmentSpinnerBinding? = null
-var array = arrayListOf("")
+    var binding: FragmentSpinnerBinding? = null
+    var array = arrayListOf("")
+    lateinit var arrayAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -46,6 +48,10 @@ var array = arrayListOf("")
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arrayAdapter = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1,
+            array)
+        binding?.DynamicValueSpinner?.adapter = arrayAdapter
         binding?.StaticValueSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
           override fun onItemSelected(
               parent: AdapterView<*>?,
