@@ -6,4 +6,5 @@
     <dimen name="sp_500">500sp</dimen>
     <dimen name="sp_600">600sp</dimen>
     <dimen name="sp_550">550sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
 </resources>

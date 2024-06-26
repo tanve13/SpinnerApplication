@@ -8,6 +8,7 @@
     <string name="enter_city">Enter City</string>
     <string name="add">ADD</string>
     <string name="enter_your_city">enter city</string>
+    <string name="list_view_array_adapter">List View Array Adapter</string>
 
 
     <string-array name="gender">

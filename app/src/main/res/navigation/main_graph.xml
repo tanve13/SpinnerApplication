@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_mainFragment_to_spinnerFragment"
             app:destination="@id/spinnerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_listArrayAdapterFragment"
+            app:destination="@id/listArrayAdapterFragment" />
     </fragment>
     <fragment
         android:id="@+id/spinnerFragment"
         android:name="com.tanveer.spinnerapplication.SpinnerFragment"
         android:label="fragment_spinner"
         tools:layout="@layout/fragment_spinner" />
+    <fragment
+        android:id="@+id/listArrayAdapterFragment"
+        android:name="com.tanveer.spinnerapplication.ListArrayAdapterFragment"
+        android:label="fragment_list_array_adapter"
+        tools:layout="@layout/fragment_list_array_adapter" />
 </navigation>

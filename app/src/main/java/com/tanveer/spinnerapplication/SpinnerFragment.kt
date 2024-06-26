@@ -28,7 +28,7 @@ class SpinnerFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     var binding: FragmentSpinnerBinding? = null
-    var array = arrayListOf("")
+    var array = arrayListOf("Jalandhar")
     lateinit var arrayAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

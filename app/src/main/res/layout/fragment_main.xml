@@ -10,11 +10,22 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/spinner"
-      android:textSize="@dimen/sp_30"
+      android:textSize="@dimen/sp_20"
       android:id="@+id/btnSpinner"
       android:textStyle="bold"
       android:layout_marginTop="@dimen/sp_30"
       android:layout_gravity="center"/>
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/list_view_array_adapter"
+      android:textSize="@dimen/sp_20"
+      android:id="@+id/btnList_Array_Adapter"
+      android:textStyle="bold"
+      android:layout_marginTop="@dimen/sp_30"
+      android:layout_gravity="center"/>
+
 
 
 </LinearLayout>
