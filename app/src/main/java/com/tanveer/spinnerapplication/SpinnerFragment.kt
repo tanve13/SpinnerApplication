@@ -69,7 +69,8 @@ var array = arrayListOf("")
                     if (etEnterCity?.text?.toString().isNullOrEmpty()){
                         etEnterCity.error = resources.getString((R.string.enter_your_city))
                     } else{
-
+                        array.add(etEnterCity?.text?.toString()?:"")
+                        this.dismiss()
                     }
                 }
             }
