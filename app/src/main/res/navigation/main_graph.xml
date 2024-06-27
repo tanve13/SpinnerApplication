@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_listArrayAdapterFragment"
             app:destination="@id/listArrayAdapterFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_baseAdapterFragment"
+            app:destination="@id/baseAdapterFragment" />
     </fragment>
     <fragment
         android:id="@+id/spinnerFragment"
@@ -27,4 +30,9 @@
         android:name="com.tanveer.spinnerapplication.ListArrayAdapterFragment"
         android:label="fragment_list_array_adapter"
         tools:layout="@layout/fragment_list_array_adapter" />
+    <fragment
+        android:id="@+id/baseAdapterFragment"
+        android:name="com.tanveer.spinnerapplication.BaseAdapterFragment"
+        android:label="fragment_base_adapter"
+        tools:layout="@layout/fragment_base_adapter" />
 </navigation>

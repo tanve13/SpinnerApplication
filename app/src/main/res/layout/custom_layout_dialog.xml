@@ -12,7 +12,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_city"
+        android:hint="@string/enter_city"
         android:id="@+id/etEnterCity"
         android:textSize="@dimen/sp_30"/>
     <com.google.android.material.button.MaterialButton

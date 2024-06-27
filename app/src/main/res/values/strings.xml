@@ -9,6 +9,9 @@
     <string name="add">ADD</string>
     <string name="enter_your_city">enter city</string>
     <string name="list_view_array_adapter">List View Array Adapter</string>
+    <string name="list_view_base_adapter">List View Base Adapter</string>
+    <string name="name">NAME</string>
+    <string name="Rollno">Roll no</string>
 
 
     <string-array name="gender">
