@@ -25,7 +25,7 @@ class ListArrayAdapterFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     var binding : FragmentListArrayAdapterBinding? = null
-    var array = arrayListOf("")
+    var array = arrayListOf("city")
     lateinit var arrayAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +59,7 @@ class ListArrayAdapterFragment : Fragment() {
                     dialogBinding.etEnterCity.error = resources.getString((R.string.enter_your_city))
                 } else{
                     array.add(dialogBinding.etEnterCity?.text?.toString()?:"")
+                    arrayAdapter.notifyDataSetChanged()
                     dialog.dismiss()
                 }
             }
