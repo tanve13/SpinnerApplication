@@ -12,6 +12,7 @@
     <string name="list_view_base_adapter">List View Base Adapter</string>
     <string name="name">NAME</string>
     <string name="Rollno">Roll no</string>
+    <string name="base_adapter_with_data_class">Base Adapter With Data Class</string>
 
 
     <string-array name="gender">
