@@ -1,10 +1,16 @@
 package com.tanveer.spinnerapplication
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
+import com.tanveer.spinnerapplication.databinding.CustomLayoutDialogBinding
+import com.tanveer.spinnerapplication.databinding.Customdialog2Binding
 import com.tanveer.spinnerapplication.databinding.FragmentStudentDataClassBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,6 +50,70 @@ class StudentDataClassFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.baseListView?.adapter = adapter
+        binding?.btnFabButton?.setOnClickListener{
+            val dialogBinding = Customdialog2Binding.inflate(layoutInflater)
+            val dialog = Dialog(requireContext()).apply {
+                setContentView(dialogBinding.root)
+                getWindow()?.setLayout(
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT
+                )
+                show()
+            }
+            dialogBinding.btnSubmit.setOnClickListener{
+                if (dialogBinding.etEnterName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterName.error = "Enter Name"
+                } else if(dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterRollNo.error = "Enter Roll No"
+                } else if(dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterCourseName.error ="Enter Course Name"
+                }else{
+                    studentArray.add(StudentDataClass(
+                        dialogBinding.etEnterRollNo.text.toString().toInt(),
+                        dialogBinding.etEnterName.text.toString(),
+                        dialogBinding.etEnterCourseName.text.toString()))
+                    dialog.dismiss()
+                }
+            }
+        }
+        binding?.baseListView?.setOnClickListener{ p0 ->
+            val dialogBinding = Customdialog2Binding.inflate(layoutInflater)
+            val dialog = Dialog(requireContext()).apply {
+                setContentView(dialogBinding.root)
+                getWindow()?.setLayout(
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT
+                )
+                show()
+            }
+            dialogBinding.btnSubmit.setOnClickListener{
+                if (dialogBinding.etEnterName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterName.error = "Enter Name"
+                } else if(dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterRollNo.error = "Enter Roll NO"
+                } else if(dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterCourseName.error ="Enter Course Name"
+                }else{
+                    studentArray.add(StudentDataClass(
+                        dialogBinding.etEnterRollNo.text.toString().toInt(),
+                        dialogBinding.etEnterName.text.toString(),
+                        dialogBinding.etEnterCourseName.text.toString()))
+                    dialog.dismiss()
+                }
+            }
+        }
+        binding?.baseListView?.setOnItemLongClickListener{ _,_,i,Long ->
+        var alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle(resources.getString(R.string.Do_you_want_to_delete_this_list))
+        alertDialog.setPositiveButton("Yes"){ _,_ ->
+            studentArray.removeAt(i)
+            adapter.notifyDataSetChanged()
+        }
+        alertDialog.setNegativeButton("no"){_,_ ->
+        }
+         alertDialog.show()
+         return@setOnItemLongClickListener true
+        }
     }
     companion object {
         /**

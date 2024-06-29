@@ -27,7 +27,7 @@ class StudentClass(var studentList: ArrayList<StudentDataClass>): BaseAdapter(){
         val tvCourse = view.findViewById<TextView>(R.id.tvCourse)
         tvRollNo.setText(studentList[p0].rollNo.toString())
         tvName. setText(studentList[p0].name)
-       tvCourse.setText(studentList[p0].course)
+      tvCourse.setText(studentList[p0].course)
         return view
     }
 }
