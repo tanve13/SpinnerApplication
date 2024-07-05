@@ -30,19 +30,21 @@ class StudentDataClassFragment : Fragment() {
     var studentArray = arrayListOf<StudentDataClass>()
     var binding: FragmentStudentDataClassBinding? = null
     var adapter = StudentClass(studentArray)
-    override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        studentArray.add(StudentDataClass(1,"Ram","c language"))
-        studentArray.add(StudentDataClass(2,"Rohan","c++ language"))
+        studentArray.add(StudentDataClass(1, "Ram", "c language"))
+        studentArray.add(StudentDataClass(2, "Rohan", "c++ language"))
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? { binding = FragmentStudentDataClassBinding.inflate(inflater)
+    ): View? {
+        binding = FragmentStudentDataClassBinding.inflate(inflater)
         // Inflate the layout for this fragment
         return binding?.root
     }
@@ -50,7 +52,7 @@ class StudentDataClassFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.baseListView?.adapter = adapter
-        binding?.btnFabButton?.setOnClickListener{
+        binding?.btnFabButton?.setOnClickListener {
             val dialogBinding = Customdialog2Binding.inflate(layoutInflater)
             val dialog = Dialog(requireContext()).apply {
                 setContentView(dialogBinding.root)
@@ -60,23 +62,26 @@ class StudentDataClassFragment : Fragment() {
                 )
                 show()
             }
-            dialogBinding.btnSubmit.setOnClickListener{
+            dialogBinding.btnSubmit.setOnClickListener {
                 if (dialogBinding.etEnterName.text.toString().trim().isNullOrEmpty()) {
                     dialogBinding.etEnterName.error = "Enter Name"
-                } else if(dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
+                } else if (dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
                     dialogBinding.etEnterRollNo.error = "Enter Roll No"
-                } else if(dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
-                    dialogBinding.etEnterCourseName.error ="Enter Course Name"
-                }else{
-                    studentArray.add(StudentDataClass(
-                        dialogBinding.etEnterRollNo.text.toString().toInt(),
-                        dialogBinding.etEnterName.text.toString(),
-                        dialogBinding.etEnterCourseName.text.toString()))
+                } else if (dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterCourseName.error = "Enter Course Name"
+                } else {
+                    studentArray.add(
+                        StudentDataClass(
+                            dialogBinding.etEnterRollNo.text.toString().toInt(),
+                            dialogBinding.etEnterName.text.toString(),
+                            dialogBinding.etEnterCourseName.text.toString()
+                        )
+                    )
                     dialog.dismiss()
                 }
             }
         }
-        binding?.baseListView?.setOnClickListener{ p0 ->
+        binding?.baseListView?.setOnItemClickListener { adapterView, view, i, l ->
             val dialogBinding = Customdialog2Binding.inflate(layoutInflater)
             val dialog = Dialog(requireContext()).apply {
                 setContentView(dialogBinding.root)
@@ -86,35 +91,39 @@ class StudentDataClassFragment : Fragment() {
                 )
                 show()
             }
-            dialogBinding.btnSubmit.setOnClickListener{
+            dialogBinding.btnSubmit.setOnClickListener {
                 if (dialogBinding.etEnterName.text.toString().trim().isNullOrEmpty()) {
                     dialogBinding.etEnterName.error = "Enter Name"
-                } else if(dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
+                } else if (dialogBinding.etEnterRollNo.text.toString().trim().isNullOrEmpty()) {
                     dialogBinding.etEnterRollNo.error = "Enter Roll NO"
-                } else if(dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
-                    dialogBinding.etEnterCourseName.error ="Enter Course Name"
-                }else{
-                    studentArray.add(StudentDataClass(
-                        dialogBinding.etEnterRollNo.text.toString().toInt(),
-                        dialogBinding.etEnterName.text.toString(),
-                        dialogBinding.etEnterCourseName.text.toString()))
+                } else if (dialogBinding.etEnterCourseName.text.toString().trim().isNullOrEmpty()) {
+                    dialogBinding.etEnterCourseName.error = "Enter Course Name"
+                } else {
+                    studentArray.set(
+                        i, StudentDataClass(
+                            dialogBinding.etEnterRollNo.text.toString().toInt(),
+                            dialogBinding.etEnterName.text.toString(),
+                            dialogBinding.etEnterCourseName.text.toString()
+                        )
+                    )
                     dialog.dismiss()
                 }
             }
         }
-        binding?.baseListView?.setOnItemLongClickListener{ _,_,i,Long ->
-        var alertDialog = AlertDialog.Builder(requireContext())
-        alertDialog.setTitle(resources.getString(R.string.Do_you_want_to_delete_this_list))
-        alertDialog.setPositiveButton("Yes"){ _,_ ->
-            studentArray.removeAt(i)
-            adapter.notifyDataSetChanged()
-        }
-        alertDialog.setNegativeButton("no"){_,_ ->
-        }
-         alertDialog.show()
-         return@setOnItemLongClickListener true
+        binding?.baseListView?.setOnItemLongClickListener { _, _, i, Long ->
+            var alertDialog = AlertDialog.Builder(requireContext())
+            alertDialog.setTitle(resources.getString(R.string.Do_you_want_to_delete_this_list))
+            alertDialog.setPositiveButton("Yes") { _, _ ->
+                studentArray.removeAt(i)
+                adapter.notifyDataSetChanged()
+            }
+            alertDialog.setNegativeButton("no") { _, _ ->
+            }
+            alertDialog.show()
+            return@setOnItemLongClickListener true
         }
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

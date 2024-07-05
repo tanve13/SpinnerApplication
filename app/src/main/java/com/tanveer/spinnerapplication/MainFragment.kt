@@ -22,7 +22,7 @@ class MainFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-   var binding: FragmentMainBinding? = null
+    var binding: FragmentMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,14 +39,14 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding?.root
         // Inflate the layout for this fragment
-       // return inflater.inflate(R.layout.fragment_main, container, false)
+        // return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      binding?.btnSpinner?.setOnClickListener {
-          findNavController().navigate(R.id.action_mainFragment_to_spinnerFragment)
-      }
+        binding?.btnSpinner?.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_spinnerFragment)
+        }
         binding?.btnListArrayAdapter?.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_listArrayAdapterFragment)
         }
@@ -57,6 +57,7 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_studentDataClassFragment)
         }
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

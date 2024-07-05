@@ -24,7 +24,7 @@ class ListArrayAdapterFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var binding : FragmentListArrayAdapterBinding? = null
+    var binding: FragmentListArrayAdapterBinding? = null
     var array = arrayListOf("city")
     lateinit var arrayAdapter: ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,7 @@ class ListArrayAdapterFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,20 +46,23 @@ class ListArrayAdapterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arrayAdapter = ArrayAdapter(requireContext(),
-        android.R.layout.simple_list_item_1,array)
+        arrayAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1, array
+        )
         binding?.lvListArrayAdapter?.adapter = arrayAdapter
-        binding?.btnListFab?.setOnClickListener{
+        binding?.btnListFab?.setOnClickListener {
             val dialogBinding = CustomLayoutDialogBinding.inflate(layoutInflater)
             val dialog = Dialog(requireContext()).apply {
                 setContentView(dialogBinding.root)
                 show()
             }
-            dialogBinding.btnAdd.setOnClickListener{
-                if (dialogBinding.etEnterCity?.text?.toString().isNullOrEmpty()){
-                    dialogBinding.etEnterCity.error = resources.getString((R.string.enter_your_city))
-                } else{
-                    array.add(dialogBinding.etEnterCity?.text?.toString()?:"")
+            dialogBinding.btnAdd.setOnClickListener {
+                if (dialogBinding.etEnterCity?.text?.toString().isNullOrEmpty()) {
+                    dialogBinding.etEnterCity.error =
+                        resources.getString((R.string.enter_your_city))
+                } else {
+                    array.add(dialogBinding.etEnterCity?.text?.toString() ?: "")
                     arrayAdapter.notifyDataSetChanged()
                     dialog.dismiss()
                 }
@@ -66,6 +70,7 @@ class ListArrayAdapterFragment : Fragment() {
         }
 
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
